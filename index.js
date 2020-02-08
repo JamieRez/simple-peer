@@ -1,6 +1,5 @@
 var debug = require('debug')('simple-peer')
 var getBrowserRTC = require('get-browser-rtc')
-var randombytes = require('randombytes')
 var stream = require('readable-stream')
 var queueMicrotask = require('queue-microtask') // TODO: remove when Node 10 is not supported
 
@@ -676,7 +675,7 @@ class Peer extends stream.Duplex {
       this._maybeReady()
     }
     if (iceConnectionState === 'failed') {
-      this.destroy(makeError('Ice connection failed.', 'ERR_ICE_CONNECTION_FAILURE'))
+      // this.destroy(makeError('Ice connection failed.', 'ERR_ICE_CONNECTION_FAILURE'))
     }
     if (iceConnectionState === 'closed') {
       this.destroy(makeError('Ice connection closed.', 'ERR_ICE_CONNECTION_CLOSED'))
